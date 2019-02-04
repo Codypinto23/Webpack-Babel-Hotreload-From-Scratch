@@ -1,5 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin'); //creates our index.html file
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+
 
 module.exports = {
     //Our react code location
@@ -26,5 +28,8 @@ module.exports = {
         new HtmlWebpackPlugin({
             template:'./src/index.html' //looks at this file as our template
         })
-    ]
-}
+    ],
+    optimization: {
+        minimizer: [new UglifyJsPlugin()],
+    }
+};
